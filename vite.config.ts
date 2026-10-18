@@ -29,6 +29,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: port,
+      host: "0.0.0.0",
     },
     preview: {
       port: port,
