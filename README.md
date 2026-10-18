@@ -28,6 +28,13 @@ prefix host `https://ifs24050-pabwe2026-sk-p6-sveltekit...` tanpa base path.
   Dependensi dinaikkan ke `typescript@^6.0.3` dan `bun.lock` dibuat ulang.
 - `.npmrc` (`legacy-peer-deps=true`) ditambahkan sebagai pengaman bila platform memakai `npm install`.
 - Build produksi wajib lewat Bun (`bun run build`) karena memakai `@sveltejs/adapter-bun`.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 45bd4f1c444eff778a86acc34724719b576f9641
+>>>>>>> 394f90fa2496d3707b07c96d0031057fd64a632c
 
 ## Lighthouse Best Practices 100
 
@@ -36,6 +43,10 @@ prefix host `https://ifs24050-pabwe2026-sk-p6-sveltekit...` tanpa base path.
   sehingga tidak ada preflight CORS lintas-origin. Upstream dapat diubah lewat env `DELCOM_API_UPSTREAM`.
 - **Header keamanan** (X-Frame-Options, COOP, nosniff, Referrer-Policy, Permissions-Policy) lewat
   `src/hooks.server.ts` (Bun) dan `vercel.json` (Vercel, termasuk aset statis).
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 394f90fa2496d3707b07c96d0031057fd64a632c
 
 ## Performance (Lighthouse)
 
@@ -43,6 +54,7 @@ prefix host `https://ifs24050-pabwe2026-sk-p6-sveltekit...` tanpa base path.
   tidak ada lagi request/preconnect ke Google Fonts.
 - Aplikasi berjalan sebagai SPA (`ssr = false`), jadi `src/app.html` memuat shell "Memuat…" dengan CSS inline
   agar First Contentful Paint terjadi tepat setelah HTML tiba. Shell dibuang di `+layout.svelte` saat mount.
+<<<<<<< HEAD
 
 ## Optimasi gambar (Vercel)
 
@@ -51,3 +63,9 @@ Cover kursus dan foto profil berasal dari server Delcom (tanpa cache, ukuran asl
 diperkecil sesuai ukuran tampilan (`srcset`/`sizes`), AVIF/WebP, dan cache 1 tahun (`minimumCacheTTL`).
 Konfigurasinya ada di `vite.config.ts` (`adapterVercel({ images })`). Di Bun/Jenkins/lokal URL asli dipakai.
 Kartu kursus pertama dimuat `eager` + `fetchpriority="high"` karena kandidat LCP.
+=======
+=======
+=======
+>>>>>>> 74fc50872d8910e0819e2e3766b7ee8a496daa9d
+>>>>>>> 45bd4f1c444eff778a86acc34724719b576f9641
+>>>>>>> 394f90fa2496d3707b07c96d0031057fd64a632c
