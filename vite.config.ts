@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       DELCOM_BASEURL: JSON.stringify(
-        env.VITE_DELCOM_BASEURL || "https://open-api.delcom.org/api/v1"
+        env.VITE_DELCOM_BASEURL || "/api/v1"
       ),
     },
     test: {
