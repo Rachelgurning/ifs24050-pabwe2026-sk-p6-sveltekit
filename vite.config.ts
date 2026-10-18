@@ -1,5 +1,6 @@
 import { sveltekit } from "@sveltejs/kit/vite";
-import adapter from "@sveltejs/adapter-bun";
+import adapterBun from "@sveltejs/adapter-bun";
+import adapterVercel from "@sveltejs/adapter-vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { svelteTesting } from "@testing-library/svelte/vite";
 import { defineConfig, loadEnv } from "vite";
@@ -12,13 +13,16 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       sveltekit({
-        adapter: adapter({
-          envPrefix: "APP_",
-          precompress: true,
-          serverOptions: {
-            port: port,
-          },
-        }),
+        // Vercel mengatur VERCEL=1 saat build; di Jenkins/lokal tetap adapter-bun.
+        adapter: process.env.VERCEL
+          ? adapterVercel()
+          : adapterBun({
+              envPrefix: "APP_",
+              precompress: true,
+              serverOptions: {
+                port: port,
+              },
+            }),
       }),
       tailwindcss(),
       svelteTesting(),
