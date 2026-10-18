@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { LoaderCircle } from "lucide-svelte";
+  import { optimizedImage } from "../../../helpers/imageHelper";
   import { getUsers } from "../api/userApi";
   import { setUsers, users } from "../states/userStore";
 
@@ -40,7 +41,7 @@
       {#each $users as user (user.id)}
         <li class="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
           {#if user.photo}
-            <img src={user.photo} alt="" width="48" height="48" loading="lazy" class="h-12 w-12 rounded-full object-cover" />
+            <img src={optimizedImage(user.photo, 96)} alt="" width="48" height="48" loading="lazy" class="h-12 w-12 rounded-full object-cover" />
           {:else}
             <span class="grid h-12 w-12 place-items-center rounded-full bg-indigo-100 font-bold text-indigo-800" aria-hidden="true">
               {user.name.charAt(0).toUpperCase()}

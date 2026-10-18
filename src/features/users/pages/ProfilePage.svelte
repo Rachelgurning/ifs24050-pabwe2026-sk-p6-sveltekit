@@ -5,6 +5,7 @@
     showSuccessDialog,
     showWarningDialog,
   } from "../../../helpers/toolsHelper";
+  import { optimizedImage } from "../../../helpers/imageHelper";
   import type { ApiResult } from "../../../helpers/apiHelper";
   import { btnPrimary, cardClass, inputClass, labelClass } from "../../common/ui";
   import { postPhoto, putMe, putPassword } from "../api/userApi";
@@ -87,7 +88,7 @@
     <h2 id="photo-heading" class="text-xl font-extrabold text-slate-900">Foto profil</h2>
     <div class="mt-5 flex items-center gap-4">
       {#if $profile && $profile.photo}
-        <img src={$profile.photo} alt="Foto profil saat ini" width="64" height="64" class="h-16 w-16 rounded-full object-cover" />
+        <img src={optimizedImage($profile.photo, 128)} alt="Foto profil saat ini" width="64" height="64" class="h-16 w-16 rounded-full object-cover" />
       {:else}
         <span class="grid h-16 w-16 place-items-center rounded-full bg-indigo-100 text-xl font-bold text-indigo-800" aria-hidden="true">
           {$profile ? $profile.name.charAt(0).toUpperCase() : "?"}

@@ -2,13 +2,21 @@
   import { GraduationCap, Star, Trash2, Users, Video } from "lucide-svelte";
   import { cn } from "../../common/ui";
   import { isOwner, isStudent } from "../states/coursesStore";
+  import { imageSrcset, optimizedImage } from "../../../helpers/imageHelper";
   import type { Course } from "../types";
 
   let {
     course,
     myId,
     onDelete,
-  }: { course: Course; myId: number | undefined; onDelete: (course: Course) => void } = $props();
+    priority = false,
+  }: {
+    course: Course;
+    myId: number | undefined;
+    onDelete: (course: Course) => void;
+    /** Kartu pertama (di atas lipatan) dimuat segera karena kandidat LCP. */
+    priority?: boolean;
+  } = $props();
 
   const owner = $derived(isOwner(course, myId));
   const student = $derived(isStudent(course, myId));
@@ -19,11 +27,14 @@
   <div class="relative aspect-video bg-gradient-to-br from-indigo-700 to-indigo-950">
     {#if course.cover}
       <img
-        src={course.cover}
+        src={optimizedImage(course.cover, 640)}
+        srcset={imageSrcset(course.cover, [256, 384, 640, 828])}
+        sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
         alt=""
         width="640"
         height="360"
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : undefined}
         decoding="async"
         class="h-full w-full object-cover"
       />

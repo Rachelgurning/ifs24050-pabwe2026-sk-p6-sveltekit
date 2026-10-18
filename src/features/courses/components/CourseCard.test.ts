@@ -52,4 +52,18 @@ describe("CourseCard", () => {
     expect(screen.queryByText("Milik saya")).not.toBeInTheDocument();
     expect(screen.queryByText("Terdaftar")).not.toBeInTheDocument();
   });
+
+  it("kartu prioritas memuat gambar segera dengan fetchpriority tinggi", () => {
+    const { container } = render(CourseCard, { props: { course: base, myId: 1, onDelete: vi.fn(), priority: true } });
+    const img = container.querySelector("img")!;
+    expect(img).toHaveAttribute("loading", "eager");
+    expect(img).toHaveAttribute("fetchpriority", "high");
+  });
+
+  it("kartu biasa memuat gambar secara lazy tanpa fetchpriority", () => {
+    const { container } = render(CourseCard, { props: { course: base, myId: 1, onDelete: vi.fn() } });
+    const img = container.querySelector("img")!;
+    expect(img).toHaveAttribute("loading", "lazy");
+    expect(img).not.toHaveAttribute("fetchpriority");
+  });
 });

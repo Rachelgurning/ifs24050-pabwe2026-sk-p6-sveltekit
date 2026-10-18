@@ -148,8 +148,8 @@
     </p>
   {:else}
     <ul class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-      {#each filtered as item (item.id)}
-        <li class="flex"><CourseCard course={item} myId={$myId} onDelete={handleDelete} /></li>
+      {#each filtered as item, index (item.id)}
+        <li class="flex"><CourseCard course={item} myId={$myId} onDelete={handleDelete} priority={index === 0} /></li>
       {/each}
     </ul>
   {/if}

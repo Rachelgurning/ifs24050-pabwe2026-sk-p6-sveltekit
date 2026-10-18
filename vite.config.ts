@@ -15,7 +15,15 @@ export default defineConfig(({ mode }) => {
       sveltekit({
         // Vercel mengatur VERCEL=1 saat build; di Jenkins/lokal tetap adapter-bun.
         adapter: process.env.VERCEL
-          ? adapterVercel()
+          ? adapterVercel({
+              images: {
+                sizes: [64, 96, 128, 256, 384, 640, 828, 1080, 1280],
+                domains: ["open-api.delcom.org"],
+                remotePatterns: [{ protocol: "https", hostname: "open-api.delcom.org" }],
+                formats: ["image/avif", "image/webp"],
+                minimumCacheTTL: 31536000,
+              },
+            })
           : adapterBun({
               envPrefix: "APP_",
               precompress: true,
@@ -38,8 +46,9 @@ export default defineConfig(({ mode }) => {
       chunkSizeWarningLimit: 1500,
     },
     define: {
+      IMAGE_OPTIMIZER: JSON.stringify(process.env.VERCEL ? "vercel" : ""),
       DELCOM_BASEURL: JSON.stringify(
-        env.VITE_DELCOM_BASEURL || "https://open-api.delcom.org/api/v1"
+        env.VITE_DELCOM_BASEURL || "/api/v1"
       ),
     },
     test: {

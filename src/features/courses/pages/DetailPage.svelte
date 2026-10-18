@@ -16,6 +16,7 @@
     Video,
   } from "lucide-svelte";
   import { goto } from "$app/navigation";
+  import { optimizedImage } from "../../../helpers/imageHelper";
   import type { ApiResult } from "../../../helpers/apiHelper";
   import {
     formatDate,
@@ -152,7 +153,7 @@
   <article class="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
     <div class="aspect-[16/6] bg-gradient-to-br from-indigo-700 to-indigo-950">
       {#if $course.cover}
-        <img src={$course.cover} alt={`Sampul kursus ${$course.title}`} width="1280" height="480" class="h-full w-full object-cover" />
+        <img src={optimizedImage($course.cover, 1280)} alt={`Sampul kursus ${$course.title}`} width="1280" height="480" class="h-full w-full object-cover" />
       {:else}
         <span class="grid h-full w-full place-items-center text-white/80" aria-hidden="true"><GraduationCap size={64} /></span>
       {/if}
