@@ -20,3 +20,11 @@ bun run build && bun start
 
 Aplikasi berjalan sebagai SPA (`ssr = false`) di root host, sehingga aman dipasang pada
 prefix host `https://ifs24050-pabwe2026-sk-p6-sveltekit...` tanpa base path.
+
+## Catatan perbaikan deploy
+
+- `@sveltejs/kit@3.1.0` mensyaratkan `typescript@^6`; sebelumnya proyek memakai `^5.9.3`
+  sehingga `npm install` di platform deploy gagal (ERESOLVE) dan stage **Deploy Application** FAIL.
+  Dependensi dinaikkan ke `typescript@^6.0.3` dan `bun.lock` dibuat ulang.
+- `.npmrc` (`legacy-peer-deps=true`) ditambahkan sebagai pengaman bila platform memakai `npm install`.
+- Build produksi wajib lewat Bun (`bun run build`) karena memakai `@sveltejs/adapter-bun`.
