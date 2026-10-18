@@ -39,4 +39,13 @@ describe("layout akar aplikasi", () => {
     render(RootLayout, { props: { children } });
     await waitFor(() => expect(goto).toHaveBeenCalledWith("/auth/login"));
   });
+
+  it("membuang shell #boot statis dari app.html saat aplikasi tampil", () => {
+    (page as any).url = new URL("http://localhost/auth/login");
+    const boot = document.createElement("div");
+    boot.id = "boot";
+    document.body.appendChild(boot);
+    render(RootLayout, { props: { children } });
+    expect(document.getElementById("boot")).toBeNull();
+  });
 });
