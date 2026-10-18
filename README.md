@@ -28,6 +28,7 @@ prefix host `https://ifs24050-pabwe2026-sk-p6-sveltekit...` tanpa base path.
   Dependensi dinaikkan ke `typescript@^6.0.3` dan `bun.lock` dibuat ulang.
 - `.npmrc` (`legacy-peer-deps=true`) ditambahkan sebagai pengaman bila platform memakai `npm install`.
 - Build produksi wajib lewat Bun (`bun run build`) karena memakai `@sveltejs/adapter-bun`.
+<<<<<<< HEAD
 
 ## Lighthouse Best Practices 100
 
@@ -36,3 +37,5 @@ prefix host `https://ifs24050-pabwe2026-sk-p6-sveltekit...` tanpa base path.
   sehingga tidak ada preflight CORS lintas-origin. Upstream dapat diubah lewat env `DELCOM_API_UPSTREAM`.
 - **Header keamanan** (X-Frame-Options, COOP, nosniff, Referrer-Policy, Permissions-Policy) lewat
   `src/hooks.server.ts` (Bun) dan `vercel.json` (Vercel, termasuk aset statis).
+=======
+>>>>>>> 74fc50872d8910e0819e2e3766b7ee8a496daa9d
