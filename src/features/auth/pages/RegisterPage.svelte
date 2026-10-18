@@ -34,9 +34,9 @@
 
 <form class="mt-8 space-y-5" onsubmit={handleSubmit}>
   <div>
-    <label class={labelClass} for="register-name">Nama lengkap</label>
+    <label class={labelClass} for="register-name-input">Nama lengkap</label>
     <input
-      id="register-name"
+      id="register-name-input"
       class={inputClass}
       type="text"
       autocomplete="name"
@@ -47,9 +47,9 @@
     />
   </div>
   <div>
-    <label class={labelClass} for="register-email">Email</label>
+    <label class={labelClass} for="register-email-input">Email</label>
     <input
-      id="register-email"
+      id="register-email-input"
       class={inputClass}
       type="email"
       autocomplete="email"
@@ -60,9 +60,9 @@
     />
   </div>
   <div>
-    <label class={labelClass} for="register-password">Kata sandi</label>
+    <label class={labelClass} for="register-password-input">Kata sandi</label>
     <input
-      id="register-password"
+      id="register-password-input"
       class={inputClass}
       type="password"
       autocomplete="new-password"
@@ -73,7 +73,7 @@
       oninput={onPassword}
     />
   </div>
-  <button class={`${btnPrimary} w-full`} type="submit" disabled={loading}>
+  <button id="register-submit-button" class={`${btnPrimary} w-full`} type="submit" disabled={loading}>
     {loading ? "Memproses..." : "Daftar"}
   </button>
 </form>

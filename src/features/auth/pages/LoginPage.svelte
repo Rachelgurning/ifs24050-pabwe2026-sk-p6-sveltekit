@@ -40,9 +40,9 @@
 
 <form class="mt-8 space-y-5" onsubmit={handleSubmit}>
   <div>
-    <label class={labelClass} for="login-email">Email</label>
+    <label class={labelClass} for="login-email-input">Email</label>
     <input
-      id="login-email"
+      id="login-email-input"
       class={inputClass}
       type="email"
       autocomplete="email"
@@ -53,9 +53,9 @@
     />
   </div>
   <div>
-    <label class={labelClass} for="login-password">Kata sandi</label>
+    <label class={labelClass} for="login-password-input">Kata sandi</label>
     <input
-      id="login-password"
+      id="login-password-input"
       class={inputClass}
       type="password"
       autocomplete="current-password"
@@ -65,7 +65,7 @@
       oninput={onPassword}
     />
   </div>
-  <button class={`${btnPrimary} w-full`} type="submit" disabled={loading}>
+  <button id="login-submit-button" class={`${btnPrimary} w-full`} type="submit" disabled={loading}>
     {loading ? "Memproses..." : "Masuk"}
   </button>
 </form>
